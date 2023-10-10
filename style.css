@@ -1,0 +1,221 @@
+:root {
+  background-size: 12px 12px;
+  background-image:
+    linear-gradient(to right, rgb(238, 238, 238) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(238, 238, 238) 1px, transparent 1px);
+  user-select: none;
+  font-family: 'DejaVuSansMono-Bold';
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* DISPLAY FONT */
+@font-face {
+  font-family: 'DejaVuSansMono-Bold';
+  src: url('./assets/fonts/DejaVuSansMono-Bold.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DejaVuSansMono';
+  src: url('./assets/fonts/DejaVuSansMono.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monserrat-Medium';
+  src: url('./assets/fonts/Montserrat-Medium.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monserrat-Medium';
+  src: url('./assets/fonts/Montserrat-Regular.woff2');
+  font-display: swap;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+}
+
+/* STYLED HTML ELEMENTS */
+
+.navbar {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 1.3rem;
+  font-family: 'DejaVuSansMono-Bold';
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+h5 {
+  margin: 0px;
+}
+
+h6 {
+  margin: 0px;
+}
+
+hr {
+  width: 100%;
+  margin: 0px;
+}
+
+.chatbar {
+  position: absolute;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  bottom: 1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  left: 50%;
+  height: 7vh;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 40vw;
+  height: 80%;
+  font-size: 0.9rem;
+  font-family: 'Monserrat-Medium';
+}
+
+.button-icon {
+  display: grid;
+  place-items: center;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #28B463;
+  cursor: pointer;
+  color: white;
+}
+
+.button-icon:hover {
+  background-color: #2ECC71;
+}
+
+.button-icon:active {
+  transform: scale(.9);
+}
+
+.resetBtn {
+  position: absolute;
+  right: -3.5rem;
+  display: grid;
+  place-items: center;
+  padding: 0.3rem;
+  border: none;
+  height: 7vh;
+  width: 3.5vw;
+  border-radius: 5px;
+  background-color: #17202A;
+  cursor: pointer;
+  color: white;
+}
+
+.resetBtn:hover {
+  background-color: #34495E;
+}
+
+.resetBtn:active {
+  transform: scale(.9);
+}
+
+.cardClass {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  cursor: move;
+  background-color: white;
+  width: 160px;
+  padding: 0.7rem;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  touch-action: none;
+  transform: translate(0px, 0px);
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  /* border-right: .15em solid  black;  */
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  /* 50% { border-color: black; } */
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+
+.loader::before , .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid  gray;
+  animation: prixClipFix 2s linear infinite ;
+}
+.loader::after{
+  border-color: #FF3D00;
+  animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+} 

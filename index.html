@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TITULO DE LA PESTAÑA DEL PROGRAMA -->
+    <title>ClassChart</title>
+
+    <!-- LAZY LOAD -->
+    <link rel="preload" href="assets/fonts/DejaVuSansMono-Bold.woff2" as="font" type="font/woff2" crossorigin fetchPriority="high">
+    <link rel="preload" href="assets/fonts/DejaVuSansMono.woff2" as="font" type="font/woff2" crossorigin fetchPriority="high">
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin fetchPriority="high">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchPriority="high">
+
+    <!-- IMPORT STYLES -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- ENTRADA DE LA APLICACION -->
+    <main id="root"></main>
+    <!-- IMPORTACION DE NUESTRO ARCHIVO JAVASCRIPT QUE ES LA ENTRADA DE NUESTRA APLICACIÓN -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
