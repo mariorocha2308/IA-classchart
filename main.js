@@ -1,7 +1,7 @@
 import { createElement, Workflow, ArrowBigUpDash } from 'lucide';
 
 import { initChat } from './src/initChat.mjs';
-import { initDraggable } from './src/initDraggable'
+import { initDraggable } from './src/initDraggable.mjs'
 
 function initApp() {
   const $root = document.getElementById('root')

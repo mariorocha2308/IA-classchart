@@ -1,11 +1,11 @@
 import { createElement, Trash2 } from 'lucide';
 
-import { analyserText } from './analyserText';
+import { analyserText } from './analyserText.mjs';
 import { initDiagramChart } from './initDiagramChart.mjs'
 
-// export const STATE = {
-//   diagram: []
-// }
+export const STATE = {
+  diagram: []
+}
 
 export function initChat() {
 
