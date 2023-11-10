@@ -3,11 +3,39 @@ import { STATE } from "./initChat.mjs";
 export function analyserText(chat) {
 
   const segments = chat.split(' ')
+
   var classID = "";
   var attributes = []
   var methods = []
+  var relations = []
 
   for(let i = 0; i < segments.length; i++) {
+
+    // init connections
+    if(segments[i].includes('>')) {
+      let matcherId = [segments[i-1], segments[i+1], {}]
+
+      if (segments.includes('plug:')) {
+        let idxPlug = segments.indexOf('plug:')
+
+        matcherId[2] = {
+          ...matcherId[2], plug: segments[idxPlug+1].split('/')
+        }
+      }
+      
+      if (segments.includes('label:')) {
+        let idxLabel = segments.indexOf('label:')
+
+        matcherId[2] = {
+          ...matcherId[2], label: segments[idxLabel+1].split('/')
+        }
+      }
+      
+      STATE.connections.push(matcherId)
+      return;
+    }
+
+    
     // init attributes
     if(segments[i].includes(':')) {
       attributes.push({
@@ -18,13 +46,13 @@ export function analyserText(chat) {
     }
     
     // init methods
-      if(segments[i].includes('(') && segments[i].includes(')')) {
-        methods.push({
-          visible: segments[i].charAt(0),
-          method: segments[i].substring(1),
-          type: "func"
-        })
-      }
+    if(segments[i].includes('(') && segments[i].includes(')')) {
+      methods.push({
+        visible: segments[i].charAt(0),
+        method: segments[i].substring(1),
+        type: "func"
+      })
+    }
     
     // Set init classes
     if(/[A-Z]/.test(segments[i].charAt(0))) {
@@ -42,10 +70,9 @@ export function analyserText(chat) {
 
       } else {
         STATE.diagram.push({
-          uid: Math.random().toString(36).slice(-6),
+          uid: Math.random().toString(36).slice(-4),
           class: classname,
-          attributes: attributes,
-          methods: methods
+          attributes, methods, relations
         })
       }
     }

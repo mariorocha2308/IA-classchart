@@ -1,4 +1,7 @@
-export function initDiagramChart(diagramState) {
+import { STATE } from "./initChat.mjs"
+
+export function initDiagramChart() {
+  const diagramState = STATE.diagram
   
   const $root = document.getElementById('root')
 
@@ -9,7 +12,6 @@ export function initDiagramChart(diagramState) {
     const $hr2 = document.createElement('hr')
     const $divAttributes = document.createElement('div')
     const $divMethods = document.createElement('div')
-    
     const $uid = document.createElement('h6')
     const $title = document.createElement('h5')
     const $attributes = document.createElement('h6')
@@ -22,6 +24,9 @@ export function initDiagramChart(diagramState) {
 
     $div.className = 'cardClass'
     $div.id = 'draggable'
+    $div.setAttribute('data-id', diagramState[i].uid)
+    
+    $uid.innerText = `uid: ${diagramState[i].uid}`
     $title.innerText = `clase: ${diagramState[i].class}`
     $attributes.innerText = `atributos: ${diagramState[i].attributes.length === 0 ? 'vacio' : ''}`
     $methods.innerText = `metodos: ${diagramState[i].methods.length === 0 ? 'vacio' : ''}`
@@ -52,7 +57,14 @@ export function initDiagramChart(diagramState) {
         $divMethods.appendChild($renderMethod)
       }
     }
+    
+    $div.addEventListener('mousemove', function() {
+      diagramState[i].relations.forEach(element => {
+        element.position()
+      });
+    })
 
+    $div.appendChild($uid)
     $div.appendChild($title)
     $div.appendChild($hr1)
     $div.appendChild($divAttributes)

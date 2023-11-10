@@ -2,9 +2,12 @@ import { createElement, Trash2 } from 'lucide';
 
 import { analyserText } from './analyserText.mjs';
 import { initDiagramChart } from './initDiagramChart.mjs'
+import { initLeaderLine } from './initLeaderLine.mjs';
 
 export const STATE = {
-  diagram: []
+  diagram: [],
+  connections: [],
+  listLines: []
 }
 
 export function initChat() {
@@ -30,6 +33,16 @@ export function initChat() {
   })
   
   $button.addEventListener('click', function() {
+
+    STATE.listLines.forEach(line => {
+      line.remove()
+    });
+    STATE.listLines = []
+
+    STATE.diagram.forEach(diagram => {
+      diagram.relations = []
+    });
+
     $root.appendChild($loader)
     document.querySelectorAll('#draggable').forEach( n => n.remove() );
 
@@ -45,13 +58,21 @@ export function initChat() {
     
     setTimeout(() => {
       $loader.remove()
-      initDiagramChart(STATE.diagram)
+      initDiagramChart()
+      initLeaderLine()
     }, 1500);
   })
   
   $resetButton.addEventListener('click', function() {
+
+    STATE.listLines.forEach(line => {
+      line.remove()
+    });
+
     document.querySelectorAll('#draggable').forEach( n => n.remove() );
     STATE.diagram = []
+    STATE.listLines = []
+    STATE.connections = []
     $resetButton.remove()
   })
 }

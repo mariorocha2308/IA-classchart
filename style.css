@@ -105,7 +105,7 @@ input {
   width: 40vw;
   height: 80%;
   font-size: 0.9rem;
-  font-family: 'Monserrat-Medium';
+  font-family: 'DejaVuSansMono-Bold';
 }
 
 .button-icon {
@@ -135,11 +135,12 @@ input {
   padding: 0.3rem;
   border: none;
   height: 7vh;
-  width: 3.5vw;
+  width: 3rem;
   border-radius: 5px;
   background-color: #17202A;
   cursor: pointer;
   color: white;
+  min-width: 3rem;
 }
 
 .resetBtn:hover {
